@@ -1,0 +1,23 @@
+% Read an image
+original_image = imread('example_image.jpg');
+
+% Convert the image to grayscale if it's not already
+gray_image = rgb2gray(original_image);
+
+% Perform histogram equalization
+equalized_image = histeq(gray_image);
+
+% Compute histograms
+original_histogram = imhist(gray_image);
+equalized_histogram = imhist(equalized_image);
+
+% Display the results
+figure;
+
+% Original Image and Histogram
+subplot(2, 2, 1); imshow(gray_image); title('Original Image');
+subplot(2, 2, 2); imhist(gray_image); title('Original Histogram');
+
+% Equalized Image and Histogram
+subplot(2, 2, 3); imshow(equalized_image); title('Equalized Image');
+subplot(2, 2, 4); imhist(equalized_image); title('Equalized Histogram');
